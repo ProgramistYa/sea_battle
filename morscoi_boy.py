@@ -1,5 +1,7 @@
+#                                     Морской бой против компьютера!
+
 from random import randint
-import emoji
+#import emoji
 
 class Dot:
     def __init__(self, x, y):
@@ -11,7 +13,6 @@ class Dot:
 
     def __str__(self):
         return f"Dot({self.x},{self.y}"
-
 
 class BoardException(Exception):
         pass
@@ -51,7 +52,6 @@ class Ship:
     def shooten(self, shot):
         return shot in self.dots
 
-
 class Board:
     def __init__(self, hid = False, size = 6):
         self.size = size
@@ -74,12 +74,11 @@ class Board:
     def out(self, d):
         return not ((0 <= d.x < self.size) and (0 <= d.y < self.size))
 
-
     def contour(self, ship, verb = False):
         near = [
-            (-1, -1), (-1, 0) , (-1, 1),
-            (0, -1), (0, 0) , (0, 1),
-            (1, -1), (1, 0) , (1, 1)
+            (-1, -1), (-1, 0), (-1, 1),
+            (0, -1), (0, 0), (0, 1),
+            (1, -1), (1, 0), (1, 1)
         ]
         for d in ship.dots:
             for dx, dy in near:
@@ -130,7 +129,6 @@ class Board:
     def begin(self):
         self.busy = []
 
-
 class Player:
     def __init__(self, board, enemy):
         self.board = board
@@ -172,7 +170,6 @@ class User(Player):
             x, y = int(x), int(y)
 
             return Dot(x-1, y-1)
-
 
 class Game:
     def __init__(self, size=6):
@@ -217,7 +214,6 @@ class Game:
         print(" формат ввода: X Y ")
         print(" X - номер строки  ")
         print(" Y - номер столбца ")
-
 
     def print_boards(self):
         print("-" * 20)
